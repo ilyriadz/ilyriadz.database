@@ -34,32 +34,5 @@ public class H2DatabaseClient extends H2Database
     protected String jdbc() {
         return super.jdbc().concat("tcp://");
     }
- 
-    public static void main(String[] args) throws SQLException, 
-            ClassNotFoundException, MalformedURLException,
-            NoSuchMethodException, InstantiationException, 
-            IllegalAccessException, IllegalArgumentException, 
-            InvocationTargetException  
-    {
-        
-        
-        /*H2DatabaseClient db = new H2DatabaseClient();
-        db.connect("localhost/~/test", "ilyes", "sadaoui");
-        db.showTable("test");*/
-        
-        URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{
-            Paths.get("/home/kiradja/Documents/java/libs/h2/bin/h2-1.4.200.jar").toUri().toURL()});
-        var clazz = classLoader.loadClass("org.h2.Driver");
-        var driver = (Driver)clazz.getConstructor().newInstance();
-        
-        H2Database db2 = new H2Database();
-        db2.setDriver(driver);
-        db2.connect("./testing");
-        db2.createNotExistTable("testing", "id int primary key", "name varchar(255)");
-
-        db2.delete("testing", "name like 'bachir'");
-        
-        db2.showTable("testing");
-                
-    }//*/
+    
 }
